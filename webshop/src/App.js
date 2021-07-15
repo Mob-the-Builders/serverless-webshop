@@ -2,6 +2,32 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  
+  function createProduct(data) {
+    return fetch('/.netlify/functions/products-create', {
+      body: JSON.stringify(data),
+      method: 'POST'
+    }).then(response => {
+      return response.json()
+    })
+  }
+  
+  // Product data
+  const myProduct = {
+    id: 1,
+    name: 'A product name',
+    description: 'A product description',
+    price: 1.00
+  }
+  
+  // create it!
+  createProduct(myProduct).then((response) => {
+    console.log('API response', response)
+    // set app state
+  }).catch((error) => {
+    console.log('API error', error)
+  })
+  
   return (
     <div className="App">
       <header className="App-header">
