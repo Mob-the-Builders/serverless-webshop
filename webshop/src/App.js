@@ -24,7 +24,7 @@ useEffect(() => {
       price: 1.50
     }
     // create it!
-    async function fetchAll() { // 304182775769989644
+    async function fetchAll() { // 304182775769989644 {}
       const res = await api.read("304182775769989644");
       console.log( await res);
     }
