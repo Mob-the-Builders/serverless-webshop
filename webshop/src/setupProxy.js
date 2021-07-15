@@ -23,7 +23,7 @@ module.exports = function (app) {
       }
     })
   );
-}();
+};
 
 // const options = {
 //   target: 'http://localhost:3000',
