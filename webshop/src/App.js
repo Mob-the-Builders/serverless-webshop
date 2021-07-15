@@ -1,33 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import api from './utils/api';
 
 function App() {
-  
-  function createProduct(data) {
-    return fetch('/.netlify/functions/products-create', {
-      body: JSON.stringify(data),
-      method: 'POST'
-    }).then(response => {
-      return response.json()
-    })
+  /*
+useEffect(() => {
+  async function fetchData() {
+    // You can await here
+    const response = await MyAPI.getData(someId);
+    // ...
   }
-  
-  // Product data
-  const myProduct = {
-    id: 1,
-    name: 'A product name',
-    description: 'A product description',
-    price: 1.00
-  }
-  
-  // create it!
-  createProduct(myProduct).then((response) => {
-    console.log('API response', response)
-    // set app state
-  }).catch((error) => {
-    console.log('API error', error)
-  })
-  
+  fetchData();
+}, [someId]); // Or [] if effect doesn't need props or state
+
+  */
+  useEffect(() => {
+    //Product data
+    const myProduct = {
+      id: 8,
+      name: 'Icecream Vanilla',
+      description: 'A nice cool icecream',
+      price: 1.50
+    }
+    // create it!
+    async function fetchAll() { // 304182775769989644
+      const res = await api.read("304182775769989644");
+      console.log( await res);
+    }
+    fetchAll();
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
